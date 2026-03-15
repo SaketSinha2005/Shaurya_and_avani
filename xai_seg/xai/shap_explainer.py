@@ -1,16 +1,3 @@
-"""
-xai_seg/shap_explainer.py — SHAP-based Feature Importance + Integrated Gradients
-
-Fixes applied (MPS / Apple Silicon):
-  1. All tensors explicitly float32 everywhere — MPS rejects float64
-  2. SHAP background: robust collection, shape validated, float32 cast
-  3. SHAP DeepExplainer: wrapper returns float32 scalar
-  4. IG: Captum's IntegratedGradients uses torch.linspace which returns float64
-     on MPS and crashes. REPLACED with a manual float32-safe IG implementation
-     that does NOT use Captum at all — same math, fully MPS-compatible.
-  5. All .numpy() calls guarded with .detach().cpu().float()
-"""
-
 import numpy as np
 import torch
 import torch.nn.functional as F
@@ -30,7 +17,7 @@ except ImportError:
 class SHAPExplainer:
     """
     SHAP Deep Explainer for U-Net segmentation.
-    Explains WHICH modality channels contribute most to the tumor prediction.
+    Explains which modality channels contribute most to the tumor prediction.
     """
 
     def __init__(self, model: torch.nn.Module, background: torch.Tensor,
