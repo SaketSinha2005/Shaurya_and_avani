@@ -1,13 +1,4 @@
 """
-xai_seg/gradcam.py — Grad-CAM & Grad-CAM++ for U-Net Segmentation
-
-Fixes applied (MPS / Apple Silicon):
-  1. Input always cast to .float() BEFORE .requires_grad_(True)
-     — MPS only allows autograd on float32 leaf tensors
-  2. All intermediate tensors .detach().cpu().float() before .numpy()
-  3. Null checks on hooks.gradients / hooks.activations
-  4. GradCAMExplainer.explain() always passes .float() to inner CAM
-
 Usage:
     explainer = GradCAMExplainer(model, target_layer="encoder4")
     heatmap   = explainer.explain(image_tensor, target_class=3)
