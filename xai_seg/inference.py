@@ -1,6 +1,4 @@
 """
-inference.py — Run inference on a NEW MRI scan
-
 Output saved to:  outputs/inference/<scan_name>/
   - segmentation.png     → predicted tumor mask overlaid on MRI
   - gradcam_report.png   → Grad-CAM heatmaps showing model focus
