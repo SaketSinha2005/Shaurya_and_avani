@@ -12,11 +12,6 @@ Handles the awsaf49/brats2020-training-data Kaggle dataset format:
 Each .h5 file contains:
   "image" : float32 [4, 240, 240]  — 4 MRI modalities (FLAIR, T1, T1ce, T2)
   "mask"  : float32 [240, 240]     — labels: 0=bg, 1=necrotic, 2=edema, 4=enhancing
-
-Key advantages over NIfTI pipeline:
-  - No preprocessing step needed (already sliced + normalized by Kaggle)
-  - Much faster loading (small h5 files vs full 3D volumes)
-  - Split is done at VOLUME level to prevent data leakage
 """
 
 import os
