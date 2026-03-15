@@ -1,10 +1,3 @@
-"""
-models/unet.py — U-Net with Attention Gates
-Supports standard U-Net, Attention U-Net, and U-Net++
-Input:  [B, 4, H, W]  (4 MRI modalities)
-Output: [B, 4, H, W]  (4 class logits: background, necrotic, edema, enhancing)
-"""
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
