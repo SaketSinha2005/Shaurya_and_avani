@@ -9,7 +9,7 @@ A full-stack prototype for **brain tumor segmentation** using a U-Net model trai
 ---
 
 
-## Repository Structure
+## Repository Structure and Schema
 
 - `backend/` – FastAPI server and inference pipeline
 - `src/` – Model training, preprocessing, and inference utilities
